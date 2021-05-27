@@ -15,6 +15,7 @@ usuariosTarjetas.post('/insert',authToken, async(req, res) => {
 		res.status(401).json('Faltan datos obligatorios');
 		return;
 	}
+  
 
 	// Realizamos Query
 	const consult =  await db('usuarios_mazo_tarjetas')
@@ -54,7 +55,7 @@ usuariosTarjetas.get('/get', authToken, async(req, res) => {
 
 // GET_all_cards
 usuariosTarjetas.get('/all_cards', authToken, async(req, res) => {
-	const recibido = req.body;
+	const recibido = req.query; // for js get -> jsPure only send data in get method in headers "no body"/ for curl etc... req.body / 
 
 	// validamos que existen los datos necesarios en la API
 	const array_json_validator = helper.require_data(['ID_usuarios_mazo'],recibido);

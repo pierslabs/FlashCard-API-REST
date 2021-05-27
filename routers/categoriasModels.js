@@ -20,13 +20,13 @@ categorias.get('/get_list',async(req,res) => {
 
 // GET
 categorias.get('/get', async(req,res) => {
-	const recibido = req.body;
+	const recibido = req.query;
 
 	// validamos que todos los campos que recibe la API  sean los correctos
 	const array_json_validator = helper.require_data(['ID'],recibido );
 
 	if(array_json_validator == false){
-		res.status(401).json({status:false, data:'Falatan datos obligatorios'});
+		res.status(401).json({status:false, data:'Faltan datos obligatorios'});
 		return;
 	}
 

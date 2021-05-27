@@ -15,8 +15,7 @@ mazosUsuario.post('/insert', authtoken, async(req, res) => {
 								'ID_usuarios_carpetas',
 								'ID_categorias',
 								'nombre',
-								'importancia',
-								'token'], recibido);
+								'importancia'], recibido);
 									
 
 		if(array_json_validator == false){
@@ -24,6 +23,7 @@ mazosUsuario.post('/insert', authtoken, async(req, res) => {
 			return;
 		}
 
+	
 	// realizamos consulta 
 	const result = await db('usuarios_mazo')
 	.insert({
@@ -31,9 +31,10 @@ mazosUsuario.post('/insert', authtoken, async(req, res) => {
 		ID_usuarios_carpetas: recibido.ID_usuarios_carpetas,
 		ID_categorias: recibido.ID_categorias,
 		nombre: recibido.nombre,
-		importancia: recibido.importancia
-	});
+		importancia: recibido.importancia,
 
+	});
+	
 	res.json({status:true, data: result});
 
 })
@@ -41,7 +42,7 @@ mazosUsuario.post('/insert', authtoken, async(req, res) => {
 
 // GET
 mazosUsuario.get('/get' , authtoken, async(req, res) => {
-	const recibido = req.body;
+	const recibido = req.body;     // for js get ->  jsPure only send data in get method in headers "no body"/ for curl etc... req.body / 
 
 		// validamos que existen los datos necesarios en la API
 		const array_json_validator = helper.require_data(['ID'],recibido);
@@ -64,10 +65,21 @@ mazosUsuario.get('/get' , authtoken, async(req, res) => {
 // GET_list
 mazosUsuario.get('/get_list' ,authtoken, async(req, res) => {
 
+	const enviado =req.query;	 // for js get -> jsPure only send data in get method in headers "no body"/ for curl etc... req.body / 
+
+	const array_json_validator = helper.require_data(['ID_usuarios_carpetas'],enviado );
+
+	if(array_json_validator == false){
+		return res.status(401).json({status:false, data:'Faltan datos obligatorios'});
+		
+	}
+
+
+
 	const result = await db
 	.select('*')
 	.from('usuarios_mazo')
-	.where('ID_usuarios', req.ID_usuario);
+	.where('ID_usuarios_carpetas', enviado.ID_usuarios_carpetas);
 
 	res.json({status: true, data: result });
 })

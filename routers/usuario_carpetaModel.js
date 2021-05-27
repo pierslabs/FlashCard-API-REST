@@ -29,7 +29,7 @@ userCarpeta.post('/insert',authToken, async(req, res) => {
 
 //get
 userCarpeta.get('/get', authToken, async(req, res) => {
-	const recibido = req.body;
+	const recibido = req.query;  // for js get -> jsPure only send data in get method in headers "no body"/ for curl etc... req.body / 
 	
 	// validamos que existen los datos necesarios en la API
 	const array_json_validator = helper.require_data(['ID'],recibido);
@@ -44,7 +44,7 @@ userCarpeta.get('/get', authToken, async(req, res) => {
 	.select('*')
 	.from('usuarios_carpetas')
 	.where("ID", recibido.ID)
-	.where('ID_usuarios', req.ID_usuario);
+	
 
 	res.json({status:true, data:result})
 	

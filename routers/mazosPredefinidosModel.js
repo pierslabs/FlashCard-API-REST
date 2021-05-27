@@ -71,7 +71,7 @@ mazosPredefinidos.get('/get_list',authToken, async(req, res) => {
 		const array_json_validator = helper.require_data(['ID_categorias'],enviado );
 
 		if(array_json_validator == false){
-			res.status(401).json({status:false, data:'Falatan datos obligatorios'});
+			res.status(401).json({status:false, data:'Faltan datos obligatorios'});
 			return;
 		}
 

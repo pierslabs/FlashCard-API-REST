@@ -1,0 +1,1 @@
+Import  file: 'importDBfladhcard.sql ' to your dataBase and  add password to /config/db.js
