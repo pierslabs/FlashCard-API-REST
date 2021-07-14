@@ -1,11 +1,11 @@
 const express = 				require('express');
-const users = 					require('./routers/usuarioModel');
-const userCarpeta = 			require('./routers/usuario_carpetaModel');
-const userMazos =				require('./routers/usuarios_mazosModel');
-const userTarjetas =  			require('./routers/usuarios _tarjetasModel');
-const categorias =				require('./routers/categoriasModels');
-const mazosPredefinidos = 		require('./routers/mazosPredefinidosModel');
-const tarjetasPredefinidas =	require('./routers/tarjetasPredefinidas');
+const users = 					require('./routers/usuarioRoutes');
+const userCarpeta = 			require('./routers/usuarioCarpetaRoutes');
+const userMazos =				require('./routers/usuariosMazosRoutes');
+const userTarjetas =  			require('./routers/usuariosTarjetaRoutes');
+const categorias =				require('./routers/categoriasRoutes');
+const mazosPredefinidos = 		require('./routers/mazosPredefinidosRoutes');
+const tarjetasPredefinidas =	require('./routers/tarjetasPredefinidasRoutes');
 const db = 						require('./config/db');
 const cors = 					require('cors');
 
@@ -28,9 +28,14 @@ app.use(express.json());
 	app.use('/tarjetasPredefinidas', tarjetasPredefinidas);
 	app.use('/db', db);
 
+
+// configuramos servidor
+app.set('port', process.env.PORT || 3000);
+
+
 // creamos servidor
-app.listen(3003, ()=>{
-	console.log('el servidor esta escuchando flashcard');
+app.listen(app.get('port'), ()=>{
+	console.log('el servidor Flashcards esta ecuchando en el puerto:', app.get('port'));
 })
 
 
