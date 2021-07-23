@@ -1,38 +1,17 @@
 
 const express = require('express');
 const user = express.Router();
-const db = require('../config/db');
-const sha1 = require('js-sha1');
 const authtoken = require('../auth/authtoken');
 const authlogin = require('../auth/authlogin');
 const authRecoveryPassStep2 = require('../auth/authRecoveryPassStep2'); 
-const helper = require('../helper/helpers');
+const UserController = require('../controllers/usuario.Controller')
 
 
 
 
 
 // insert------------------------------------------------------
-user.post('/insert',async (req, res) => {
-    const recibido = req.body;
-	
-	// validamos que todos los campos que recibe la API  sean los correctos
-	const array_json_validator = helper.require_data(['nombre', 'pass', 'email'],recibido );
-
-	if(array_json_validator == false){
-		res.status(401).json({status:false, data:'Falatan datos obligatorios'});
-		return;
-	}
-	
-	//Realizamos la Query <
-	const result = await db('usuarios').insert({
-		nombre: req.body.nombre,
-		pass:	req.body.pass,
-		email: 	req.body.email,
-	});
-
-	res.send({status:true,data: result[0]});
-});
+user.post('/insert', UserController.insert);
 
 
 // GET-----------------------------------------------------------
