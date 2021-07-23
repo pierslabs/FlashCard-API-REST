@@ -1,6 +1,5 @@
 const db = require('../config/db');
 const sha1 = require('js-sha1');
-
 const helper = require('../helper/helpers');
 
 exports.insert = async (req, res) => {
