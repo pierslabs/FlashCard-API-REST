@@ -1,12 +1,12 @@
 const express = 				require('express');
-const users = 					require('./routers/usuarioRoutes');
-const userCarpeta = 			require('./routers/usuarioCarpetaRoutes');
-const userMazos =				require('./routers/usuariosMazosRoutes');
-const userTarjetas =  			require('./routers/usuariosTarjetaRoutes');
-const categorias =				require('./routers/categoriasRoutes');
-const mazosPredefinidos = 		require('./routers/mazosPredefinidosRoutes');
-const tarjetasPredefinidas =	require('./routers/tarjetasPredefinidasRoutes');
-const db = 						require('./config/db');
+const users = 					require('./src/routers/usuario.Routes');
+const userCarpeta = 			require('./src/routers/usuarioCarpeta.Routes');
+const userMazos =				require('./src/routers/usuariosMazos.Routes');
+const userTarjetas =  			require('./src/routers/usuariosTarjeta.Routes');
+const categorias =				require('./src/routers/categorias.Routes');
+const mazosPredefinidos = 		require('./src/routers/mazosPredefinidos.Routes');
+const tarjetasPredefinidas =	require('./src/routers/tarjetasPredefinidas.Routes');
+const db = 						require('./src/config/db');
 const cors = 					require('cors');
 
 
