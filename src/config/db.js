@@ -1,10 +1,12 @@
+require('dotenv').config();
+
 var knex = require('knex')({
-	client: 'mysql',
+	client: `${process.env.CLIENT}`,
 	connection: {
-		host:'127.0.0.1',
-		user:'root',
-		password:'',
-		database:'flashcards'
+		host:`${process.env.HOST}`,
+		user:`${process.env.DATA_BASE_USER}`,
+		password:`${process.env.PASSWORD}`,
+		database:`${process.env.DATABASE}`
 	}
 
 });
