@@ -86,15 +86,14 @@ exports.loginUser = async(req,res)=>{
 	 2-Comprobamos que sea correcto, sino devuelve un error de autentificación 
 	*/
 		
-			// 1º Generamos un sha1 aleatorio
-	 			const token = sha1('flash'+ Math.round(Math.random()*(99999999 - 1)+1));
-				
-			// 2º Lo guardamos en la base de datos, modificando el anterior
-	 						 		
-				const result = await db('usuarios').update('token',token).where('ID', req.user[0].ID);
-
-			// 3º Lo devolvemos al navegador
-	 			res.json({status:true, data:token});
+		// 1º Generamos un sha1 aleatorio
+	 		const token = sha1('flash'+ Math.round(Math.random()*(99999999 - 1)+1));
+			
+		// 2º Lo guardamos en la base de datos, modificando el anterior
+	 					 		
+			const result = await db('usuarios').update('token',token).where('ID', req.user[0].ID);
+		// 3º Lo devolvemos al navegador
+	 		res.json({status:true, data:token});
 }
 
 // Delete
@@ -151,10 +150,10 @@ exports.recoveryPasswordStep2 = async(req, res) => {
 	/* introducimos el nuevo pass 2 veces para compararlos, comparamos los 2 pass*/
 	if(recibido.pass1 === recibido.pass2){
 		const result = await db('usuarios')
-		 					.update('pass',recibido.pass1)
-							.where('email',req.email);//req.email viene de authrecoveryPass2
-							
-		 		return res.json({status:true, data: result, message: 'El password se ha actualizado'});		
+		 	.update('pass',recibido.pass1)
+			.where('email',req.email);//req.email viene de authrecoveryPass2
+			
+		 	return res.json({status:true, data: result, message: 'El password se ha actualizado'});		
 		}else{
 			return res.json({stauts: false, data:'Los password no coinciden'});
 		}
