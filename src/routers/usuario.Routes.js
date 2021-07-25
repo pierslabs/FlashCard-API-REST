@@ -7,41 +7,31 @@ const authRecoveryPassStep2 = require('../auth/authRecoveryPassStep2');
 const userController = require('../controllers/usuario.Controller')
 
 
-
-
-
-// insert------------------------------------------------------
+// insert
 user.post('/insert', userController.insert);
 
-
-// GET-----------------------------------------------------------
+// GET
 user.get('/get', authtoken, userController.getUsusario);
 
-// LOGIN--------------------------------------------------------------------
-user.post('/login',authlogin,userController.loginUser);
+// LOGIN
+user.post('/login',authlogin, userController.loginUser);
 
-// UPDATE-------------------------------------------------------------------------------------------
+// UPDATE
 user.post('/update',authtoken, userController.updateUser);
 
 
-// DELETE-----------------------------------------------------------------------------------------
+// DELETE
 user.post('/delete',authtoken, userController.deleteUser);
-
-
-
 
 // Recovery password
 user.post('/recoveryPassword', userController.recoveryPassword);
 
-
 // Recovery password Step 2
 user.post('/recoveryPasswordStep2',authRecoveryPassStep2, userController.recoveryPasswordStep2);
 
-// Comprobar que tiene token, y no esta caducado, por ejemplo en la presentación de la página  ------------
+// Comprobar que tiene token, y no esta caducado, por ejemplo en la presentación de la página 
 user.get('/me', authtoken, userController.userMe); 
 
 
-
-
- module.exports = user;
+module.exports = user;
  

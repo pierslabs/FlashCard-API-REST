@@ -81,11 +81,11 @@ exports.loginUser = async(req,res)=>{
 		return;
 	}
 
-	// Recibimos el email y la contraseña Se encarga authlogin
-
-	// Comprobamos que sea correcto, sino devuelve un error de autentificación  "comprueba en authlogin"
-
-		// OPCIONAL
+	/*authlogin
+	 1-Recibimos el email y la contraseña 
+	 2-Comprobamos que sea correcto, sino devuelve un error de autentificación 
+	*/
+		
 			// 1º Generamos un sha1 aleatorio
 	 			const token = sha1('flash'+ Math.round(Math.random()*(99999999 - 1)+1));
 				
