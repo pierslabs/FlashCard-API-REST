@@ -6,7 +6,7 @@ var knex = require('knex')({
 		host:`${process.env.HOST}`,
 		user:`${process.env.DATA_BASE_USER}`,
 		password:`${process.env.PASSWORD}`,
-		database:'flashcards'
+		database:`${process.env.DATABASE}`
 	}
 
 });
