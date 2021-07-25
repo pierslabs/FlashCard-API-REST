@@ -22,10 +22,9 @@ const authToken = async (req, res, next)=>{
 	// codigo de donde lo llamemos
 	
 	if(result.length > 0){
-		req.ID_usuario = result[0].ID; // req.ID_usuario lo podremos llamar en otro documento cuando hagamos otra petición
-		req.rol = result[0].rol;
-		req.token= result[0].token;
-		
+		// req.ID_usuario lo podremos llamar en otro documento cuando hagamos otra petición
+		reqUser = result[0];
+ 		
 		next();
 	}else{
 		return res.status(401).json({status:false, data:'Error en el token no hay coincidencias o el token ha caducado'})
