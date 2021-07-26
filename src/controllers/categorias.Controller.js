@@ -13,7 +13,7 @@ exports.getCategorias = async(req,res) => {
 		return;
 	}
 
-	const result = await db.select('*').from('categorias').where("ID" , recibido.ID)
+	const result = await db.select('*').from('categorias').where("ID", recibido.ID)
 
 	res.json({status: true, data: result})
 	
