@@ -13,10 +13,7 @@ exports.getCategorias = async(req,res) => {
 		return;
 	}
 
-	const result = await db
-						.select('*')
-						.from('categorias')
-						.where("ID" , recibido.ID)
+	const result = await db.select('*').from('categorias').where("ID" , recibido.ID)
 
 	res.json({status: true, data: result})
 	
@@ -24,9 +21,7 @@ exports.getCategorias = async(req,res) => {
 
 exports.getListCategorias = async(req,res) => {
 	const recibido = req.body;
-	const result = await db
-						.select('*')
-						.from('categorias')
+	const result = await db.select('*').from('categorias');
 
 	res.json({status: true, data: result})
 	
