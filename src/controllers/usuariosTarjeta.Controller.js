@@ -123,9 +123,9 @@ exports.puntuaCarta = async(req,res) => {
 
 	// realizamos la query
 	const result = await db.select('puntos')
-							.from('usuarios_mazo_tarjetas')
-							.where('ID',recibido.ID)
-							.where('ID_usuarios', reqUser.ID);
+		.from('usuarios_mazo_tarjetas')
+		.where('ID',recibido.ID)
+		.where('ID_usuarios', reqUser.ID);
 
      res.json({status: true, data: result});
 }
