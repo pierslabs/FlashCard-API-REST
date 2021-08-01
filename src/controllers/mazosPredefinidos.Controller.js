@@ -71,7 +71,7 @@ exports.getListMazosPredefinidos = async(req, res) => {
 
 };
 
-exports.deleteMazosPredefinidos = async(req, res) => {
+exports.updateMazosPredefinidos = async(req, res) => {
 	const recibido = req.body;
 	
 	// validamos que todos los campos que recibe la API  sean los correctos
@@ -93,6 +93,31 @@ exports.deleteMazosPredefinidos = async(req, res) => {
 	.update('nombre',recibido.nombre)
 	.update('ID_categorias',recibido.ID_categorias)
 	.where('ID', recibido.ID)
+	
+	res.json({status: true, data: result});
+}
+
+
+exports.deleteMazosPredefinidos = async(req, res) => {
+	const recibido = req.body;
+
+	// validamos que todos los campos que recibe la API  sean los correctos
+	const array_json_validator = helper.require_data(['ID'], recibido );
+
+	if(array_json_validator === false){
+		res.status(401).json({status:false, data:'Falatan datos obligatorios'});
+		return;
+	}
+
+	// comprobamos que solo el admin puede borrar una carta
+	if(reqUser.rol != 'admin'){
+		res.status(401).json('No eres admin');
+		return;
+	}
+	
+	const result = await db('mazos_predefinidos')
+	.where('ID', recibido.ID)
+	.delete();
 	
 	res.json({status: true, data: result});
 }
