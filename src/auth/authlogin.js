@@ -2,7 +2,7 @@ const db = require('../config/db');
 
 const log = async (req, res, next)=>{
 // validamos que lleguen bien los campos mail y pass
-	const formMail = req.body.hasOwnProperty('mail')?req.body.mail:false;
+	const formMail = req.body.hasOwnProperty('email')?req.body.email:false;
 	const formPass = req.body.hasOwnProperty('pass')?req.body.pass:false;
 
 	

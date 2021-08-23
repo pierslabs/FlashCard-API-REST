@@ -80,12 +80,15 @@ exports.loginUser = async(req,res)=>{
 		res.status(401).json({status: false, data:'Faltan datos obligatorios'});
 		return;
 	}
+  
 
 	/*authlogin
 	 1-Recibimos el email y la contraseña 
 	 2-Comprobamos que sea correcto, sino devuelve un error de autentificación 
 	*/
-		
+
+  
+   
 		// 1º Generamos un sha1 aleatorio
 	 		const token = sha1('flash'+ Math.round(Math.random()*(99999999 - 1)+1));
 			
