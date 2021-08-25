@@ -15,7 +15,7 @@ exports.insertMazoUsuario = async(req, res) => {
 		], 
 		recibido);
 			
-		if(array_json_validator == false){
+		if(array_json_validator === false){
 			res.status(401).json('Faltan datos obligatorios');
 			return;
 		}
