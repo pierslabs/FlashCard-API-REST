@@ -11,7 +11,7 @@ exports.insert = async (req, res) => {
 	const array_json_validator = helper.require_data(['nombre', 'pass', 'email'],dataSend );
 
 	if(array_json_validator === false){
-		res.status(401).json({status:false, data:'Falatan datos obligatorios'});
+		res.status(401).json({status:false, data:'Faltan datos obligatorios'});
 		return;
 	}
     
